@@ -16,6 +16,12 @@
 </head>
 <body>
     <script>
+        function getParam(name) {
+            var u = window.location.search;
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+            var r = u.substr(u.indexOf('?') + 1).match(reg);
+            return r !== null ? r[2] : '';
+        }
         var url = decodeURIComponent(getParam('u'));
         var ifr = document.createElement('iframe');
         ifr.src = url;
